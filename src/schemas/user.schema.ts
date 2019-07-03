@@ -13,7 +13,7 @@ type UserType = {
 } & { [propName: string]: any }; // Allow any other properties
 
 // Schema with "explicitOnly" set to "false"
-const schema = new Schema<UserType>(
+const User = new Schema<UserType>(
   {
     userName: { type: String },
     email: { type: String },
@@ -23,7 +23,5 @@ const schema = new Schema<UserType>(
   },
   { explicitOnly: false }
 ); // explicitOnly set to "false"
-
-const User = gstore.model<UserType>("User", schema);
 
 export default User;

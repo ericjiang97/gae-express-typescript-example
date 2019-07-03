@@ -1,24 +1,25 @@
 // lib/app.ts
 require("dotenv").config();
-import express = require("express");
+import express from "express";
+const morgan = require("morgan");
 import { Gstore } from "gstore-node";
-import { Datastore } from "@google-cloud/datastore";
+
+const { datastore } = require("./config/datastore");
+
 var bodyParser = require("body-parser");
 
 import UserModel from "./models/user.model";
-const { gstore } = require("./config/gstore");
 
-const datastore = new Datastore({
-  projectId: process.env.PROJECT_ID
-});
+const { gstore } = require("./config/gstore");
 
 // Then connect gstore to the datastore instance
 gstore.connect(datastore);
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 // Create a new express application instance
 const app: express.Application = express();
+app.use(morgan("combined"));
 
 // create application/json parser
 var jsonParser = bodyParser.json();
@@ -41,6 +42,9 @@ app.get("/users/:userId", (req, res) => {
 
 app.post("/users", jsonParser, (req, res) => {
   const user = new UserModel(req.body);
+  user.save().then(entity => {
+    res.send(entity);
+  });
 });
 
 app.listen(port, () => {
