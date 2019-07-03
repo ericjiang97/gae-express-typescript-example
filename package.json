@@ -1,0 +1,36 @@
+{
+  "name": "gae-express-typescript-example",
+  "version": "1.0.0",
+  "description": "An Example App to Learn Typescript and Using it on GAE with Google Firestore",
+  "main": "src/index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "prod": "tsc && node ./build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorderikir/gae-express-typescript-example.git"
+  },
+  "keywords": [
+    "Typescript",
+    "google-app-engine",
+    "gae",
+    "gcp",
+    "datastore",
+    "express"
+  ],
+  "author": "Eric Jiang <Eric.Jiang@monash.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lorderikir/gae-express-typescript-example/issues"
+  },
+  "homepage": "https://github.com/lorderikir/gae-express-typescript-example#readme",
+  "dependencies": {
+    "@types/express": "^4.17.0",
+    "express": "^4.17.1",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.2"
+  }
+}
