@@ -1,9 +1,7 @@
 // user.schema.ts
 
-import GstoreNode from "gstore-node";
+const { gstore } = require("../config/gstore");
 
-// Gstore setup
-const gstore = GstoreNode.instances.get("default"); // This implies that you have set an instance earlier
 const Schema = gstore.Schema;
 
 type UserType = {
